@@ -11,7 +11,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(format_pretty);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 sub format_pretty {
     my ($data, $opts0) = @_;
@@ -46,14 +46,22 @@ Data::Format::Pretty - Pretty-print data structure
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
 In your program:
 
  use Data::Format::Pretty qw(format_pretty);
- print format_pretty($data, 'Console', {interactive=>1});
+
+ # automatically choose an appropriate formatter
+ print format_pretty($data);
+
+ # explicitly select a formatter
+ print format_pretty($data, {module=>'JSON'});
+
+ # specify formatter option(s)
+ print format_pretty($data, {module=>'Console', interactive=>1});
 
 =head1 DESCRIPTION
 
@@ -61,12 +69,7 @@ Data::Format::Pretty is an extremely simple framework for pretty-printing data
 structure. Its focus is on "prettiness" and automatic detection of appropriate
 format to use.
 
-To use this framework, install one or more Data::Format::Pretty::* formatter
-modules, and call format_pretty($data, $formatter, $opts). Data::Format::Pretty
-will delegate formatting to the formatting module, passing $data as well as
-format-specific options ($opts).
-
-To develop a formatter, look at one of the formatter module (like
+To develop a formatter, look at one of the formatter modules (like
 L<Data::Format::Pretty::JSON>) for example. You only need to specify one
 function, C<format_pretty>.
 
@@ -96,6 +99,8 @@ The rest of the options will be passed to the formatter module.
 One of Data::Format::Pretty::* formatter, like L<Data::Format::Pretty::Console>,
 L<Data::Format::Pretty::HTML>, L<Data::Format::Pretty::JSON>,
 L<Data::Format::Pretty::YAML>.
+
+Alternative data formatting framework/module family: L<Any::Renderer>.
 
 =head1 AUTHOR
 
