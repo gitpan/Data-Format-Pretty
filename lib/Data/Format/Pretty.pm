@@ -8,10 +8,11 @@ use Module::Load;
 use Module::Loaded;
 
 require Exporter;
-our @ISA = qw(Exporter);
-our @EXPORT_OK = qw(format_pretty);
+our @ISA       = qw(Exporter);
+our @EXPORT    = qw(ppr);
+our @EXPORT_OK = qw(format_pretty print_pretty ppr);
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 sub format_pretty {
     my ($data, $opts0) = @_;
@@ -34,6 +35,12 @@ sub format_pretty {
     $sub->($data, \%opts);
 }
 
+sub print_pretty {
+    print format_pretty(@_);
+}
+
+*ppr = \&print_pretty;
+
 1;
 # ABSTRACT: Pretty-print data structure
 
@@ -46,13 +53,13 @@ Data::Format::Pretty - Pretty-print data structure
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
 In your program:
 
- use Data::Format::Pretty qw(format_pretty);
+ use Data::Format::Pretty qw(format_pretty print_pretty);
 
  # automatically choose an appropriate formatter
  print format_pretty($data);
@@ -62,6 +69,15 @@ In your program:
 
  # specify formatter option(s)
  print format_pretty($data, {module=>'Console', interactive=>1});
+
+ # shortcut for printing to output
+ print_pretty($data);
+
+
+ # ppr() is alias for print_pretty(), exported automatically. suitable for when
+ # debugging.
+ use Data::Format::Pretty;
+ prr [1, 2, 3];
 
 =head1 DESCRIPTION
 
@@ -93,6 +109,14 @@ be used.
 =back
 
 The rest of the options will be passed to the formatter module.
+
+=head2 print_pretty($data, \%opts)
+
+Just call format_pretty() and print() it.
+
+=head2 ppr($data, \%opts) [EXPORTED BY DEFAULT]
+
+Alias for print_pretty().
 
 =head1 SEE ALSO
 

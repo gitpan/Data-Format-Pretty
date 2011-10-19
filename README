@@ -2,12 +2,12 @@ NAME
     Data::Format::Pretty - Pretty-print data structure
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
     In your program:
 
-     use Data::Format::Pretty qw(format_pretty);
+     use Data::Format::Pretty qw(format_pretty print_pretty);
 
      # automatically choose an appropriate formatter
      print format_pretty($data);
@@ -17,6 +17,15 @@ SYNOPSIS
 
      # specify formatter option(s)
      print format_pretty($data, {module=>'Console', interactive=>1});
+
+     # shortcut for printing to output
+     print_pretty($data);
+
+
+     # ppr() is alias for print_pretty(), exported automatically. suitable for when
+     # debugging.
+     use Data::Format::Pretty;
+     prr [1, 2, 3];
 
 DESCRIPTION
     Data::Format::Pretty is an extremely simple framework for
@@ -42,6 +51,12 @@ FUNCTIONS
         sophisticated detection logic will be used.
 
     The rest of the options will be passed to the formatter module.
+
+  print_pretty($data, \%opts)
+    Just call format_pretty() and print() it.
+
+  ppr($data, \%opts) [EXPORTED BY DEFAULT]
+    Alias for print_pretty().
 
 SEE ALSO
     One of Data::Format::Pretty::* formatter, like
