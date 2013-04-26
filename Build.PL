@@ -7,10 +7,9 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "File::Find" => 0,
-    "File::Temp" => 0,
+    "Data::Format::Pretty::JSON" => 0,
     "Module::Build" => "0.3601",
-    "Test::More" => 0
+    "Test::More" => "0.96"
   },
   "configure_requires" => {
     "Module::Build" => "0.3601"
@@ -20,22 +19,15 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Data-Format-Pretty",
-  "dist_version" => "0.03",
+  "dist_version" => "0.04",
   "license" => "perl",
   "module_name" => "Data::Format::Pretty",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Data::Format::Pretty::Console" => 0,
-    "Data::Format::Pretty::HTML" => 0,
-    "Data::Format::Pretty::JSON" => 0,
-    "Exporter" => 0,
-    "Module::Load" => 0,
-    "Module::Loaded" => 0,
-    "Test::More" => "0.96",
-    "perl" => "5.010000",
-    "strict" => 0,
-    "warnings" => 0
+    "Data::Format::Pretty::HTML" => "0.06",
+    "perl" => "5.010001"
   },
   "script_files" => []
 );

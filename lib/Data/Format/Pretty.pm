@@ -1,6 +1,6 @@
 package Data::Format::Pretty;
 
-use 5.010;
+use 5.010001;
 use strict;
 use warnings;
 
@@ -12,7 +12,7 @@ our @ISA       = qw(Exporter);
 our @EXPORT    = qw(ppr);
 our @EXPORT_OK = qw(format_pretty print_pretty ppr);
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 sub format_pretty {
     my ($data, $opts0) = @_;
@@ -53,7 +53,7 @@ Data::Format::Pretty - Pretty-print data structure
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -77,7 +77,7 @@ In your program:
  # ppr() is alias for print_pretty(), exported automatically. suitable for when
  # debugging.
  use Data::Format::Pretty;
- prr [1, 2, 3];
+ ppr [1, 2, 3];
 
 =head1 DESCRIPTION
 
@@ -132,7 +132,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Steven Haryanto.
+This software is copyright (c) 2013 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
